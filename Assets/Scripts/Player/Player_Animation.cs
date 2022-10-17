@@ -1,10 +1,12 @@
+using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Spine.Unity;
 
-public class Player_Input : MonoBehaviour
+public class Player_Animation : MonoBehaviour
 {
+    [SerializeField] private Player_Input input;
+
     //스파인 애니메이션을 위한 변수 선언
     public SkeletonAnimation skeletonAnimation;
     public AnimationReferenceAsset[] AnimClip;
@@ -34,13 +36,10 @@ public class Player_Input : MonoBehaviour
     //현재 어떤 애니메이션이 재생되고 있는지에 대한 변수
     private string CurAnim;
 
-    //움직임 처리 변수
-    private Rigidbody2D rigid;
-    private float xx;
 
     private void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
+        input = GetComponent<Player_Input>();
     }
 
 
@@ -53,9 +52,7 @@ public class Player_Input : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        xx = Input.GetAxisRaw("Horizontal");
-
-        if (xx == 0.0f)
+        if (input.xx == 0.0f)
         {
             animState = AnimState.Idle;
         }
@@ -63,7 +60,7 @@ public class Player_Input : MonoBehaviour
         {
             animState = AnimState.Run;
 
-            transform.localScale = new Vector2(xx, 1);
+            transform.localScale = new Vector2(input.xx, 1);
         }
 
         //애니메이션 적용
@@ -72,7 +69,7 @@ public class Player_Input : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigid.velocity = new Vector2(xx * 300 * Time.deltaTime, rigid.velocity.y);
+        input.rigid.velocity = new Vector2(input.xx * 300 * Time.deltaTime, input.rigid.velocity.y);
     }
 
     private void AsncAnimation(AnimationReferenceAsset animClip, bool loop, float timeScale)

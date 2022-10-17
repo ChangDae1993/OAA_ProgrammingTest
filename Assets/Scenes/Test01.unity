@@ -132,9 +132,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 455643593}
-  - component: {fileID: 455643594}
   - component: {fileID: 455643595}
   - component: {fileID: 455643596}
+  - component: {fileID: 455643594}
+  - component: {fileID: 455643597}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -170,23 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b5f6a5392bed8478f48e9ff3850324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonAnimation: {fileID: 800154228}
-  AnimClip:
-  - {fileID: 11400000, guid: c081b4806369bfe428af1dea58454702, type: 2}
-  - {fileID: 11400000, guid: 28f3501f025a4634597ad26492964a5c, type: 2}
-  - {fileID: 11400000, guid: 627355a785b5a524a9cf8e5fc50eae31, type: 2}
-  - {fileID: 11400000, guid: 876b53c545d26764c82398d65476a8f0, type: 2}
-  - {fileID: 11400000, guid: ecd1d738a7b11bd46ae02b60edd40839, type: 2}
-  - {fileID: 11400000, guid: 0ee3f4db19fc56041b61383506d3a3ee, type: 2}
-  - {fileID: 11400000, guid: a9793df00bf48dc47a7120562c5e92a3, type: 2}
-  - {fileID: 11400000, guid: e92c8687c56139e4ba1900347bf74902, type: 2}
-  - {fileID: 11400000, guid: bcdc047a6399f9b419360663d2747e85, type: 2}
-  - {fileID: 11400000, guid: f2af84363eedfc04382fd82a94a7466e, type: 2}
-  - {fileID: 11400000, guid: 8c6318e2ed5369b409de3d9ff2b7057b, type: 2}
-  - {fileID: 11400000, guid: b9580b2295ef8304881756b8b74d0a5d, type: 2}
-  - {fileID: 11400000, guid: c9ffafe98eb6176428bf72439e31cb93, type: 2}
-  - {fileID: 11400000, guid: 0ac66f225ab852c4ea8d0581c26a4998, type: 2}
-  - {fileID: 11400000, guid: 042ea954732a0404e855d339f5479f72, type: 2}
 --- !u!50 &455643595
 Rigidbody2D:
   serializedVersion: 4
@@ -234,6 +218,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6, y: 1.6}
   m_EdgeRadius: 0
+--- !u!114 &455643597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455643592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f140180bebb5f5947b9686b178147884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonAnimation: {fileID: 800154228}
+  AnimClip:
+  - {fileID: 11400000, guid: c081b4806369bfe428af1dea58454702, type: 2}
+  - {fileID: 11400000, guid: 28f3501f025a4634597ad26492964a5c, type: 2}
+  - {fileID: 11400000, guid: 627355a785b5a524a9cf8e5fc50eae31, type: 2}
+  - {fileID: 11400000, guid: 876b53c545d26764c82398d65476a8f0, type: 2}
+  - {fileID: 11400000, guid: ecd1d738a7b11bd46ae02b60edd40839, type: 2}
+  - {fileID: 11400000, guid: 0ee3f4db19fc56041b61383506d3a3ee, type: 2}
+  - {fileID: 11400000, guid: a9793df00bf48dc47a7120562c5e92a3, type: 2}
+  - {fileID: 11400000, guid: e92c8687c56139e4ba1900347bf74902, type: 2}
+  - {fileID: 11400000, guid: bcdc047a6399f9b419360663d2747e85, type: 2}
+  - {fileID: 11400000, guid: f2af84363eedfc04382fd82a94a7466e, type: 2}
+  - {fileID: 11400000, guid: 8c6318e2ed5369b409de3d9ff2b7057b, type: 2}
+  - {fileID: 11400000, guid: b9580b2295ef8304881756b8b74d0a5d, type: 2}
+  - {fileID: 11400000, guid: c9ffafe98eb6176428bf72439e31cb93, type: 2}
+  - {fileID: 11400000, guid: 0ac66f225ab852c4ea8d0581c26a4998, type: 2}
+  - {fileID: 11400000, guid: 042ea954732a0404e855d339f5479f72, type: 2}
 --- !u!1 &800154227
 GameObject:
   m_ObjectHideFlags: 0
