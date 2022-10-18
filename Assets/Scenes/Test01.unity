@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 455643596}
   - component: {fileID: 455643594}
   - component: {fileID: 455643597}
+  - component: {fileID: 455643598}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -171,6 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b5f6a5392bed8478f48e9ff3850324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interact: {fileID: 0}
+  isInteract: 0
   rigid: {fileID: 0}
   xx: 0
   sleepTimer: 0
@@ -260,6 +263,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c9ffafe98eb6176428bf72439e31cb93, type: 2}
   - {fileID: 11400000, guid: 0ac66f225ab852c4ea8d0581c26a4998, type: 2}
   - {fileID: 11400000, guid: 042ea954732a0404e855d339f5479f72, type: 2}
+--- !u!114 &455643598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455643592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce5237c65bbdd2843a275ddd5a6f2638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouch: 0
 --- !u!1 &640277441
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,8 +355,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640277441}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.89, y: 0.56, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 0}
+  m_LocalPosition: {x: -3.18, y: 0.56, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -384,7 +400,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1

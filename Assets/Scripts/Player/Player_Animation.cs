@@ -96,6 +96,19 @@ public class Player_Animation : MonoBehaviour
             transform.localScale = new Vector2(input.xx, 1);
         }
 
+        //밀고 당기기 동작
+        if(input.isInteract)
+        {
+            if (input.xx > 0)
+            {
+                animState = AnimState.Push;
+            }
+            else if (input.xx < 0)
+            {
+                animState = AnimState.Pull;
+            }
+        }
+
 
 
         if(input.isJump)

@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Player_Input : MonoBehaviour
 {
+    //참조
+    [SerializeField] private Player_Interaction interact;
+
+    //상호작용 처리 변수
+    public bool isInteract;
+
     //움직임 처리 변수
     public Rigidbody2D rigid;
     public float xx;
@@ -34,6 +40,7 @@ public class Player_Input : MonoBehaviour
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        interact = GetComponent<Player_Interaction>();
     }
 
     // Start is called before the first frame update
@@ -107,7 +114,23 @@ public class Player_Input : MonoBehaviour
         else
         {
             isRun = false;
-        }    
+        }
+
+        if(interact.isTouch)
+        {
+            if(Input.GetKey(KeyCode.X))
+            {
+                isInteract = true;
+            }
+            else
+            {
+                isInteract = false;
+            }
+        }
+        else
+        {
+            isInteract = false;
+        }
     }
 
     private void FixedUpdate()
