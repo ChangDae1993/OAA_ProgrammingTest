@@ -54,11 +54,6 @@ public class Player_Animation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(input.isSleep)
-        {
-            animState = AnimState.Sleep_Loop;
-            Debug.Log(animState);
-        }
 
         if (input.xx == 0.0f && !input.isSleep)
         {
@@ -72,7 +67,13 @@ public class Player_Animation : MonoBehaviour
             {
                 animState = AnimState.Sit;
             }
-
+        }
+        else if(input.isSleep)
+        {
+            //잠들기 동작
+            transform.localScale = new Vector2(input.xx + 1, 1);
+            animState = AnimState.Sleep_Loop;
+            //Debug.Log(animState);
         }
         else
         {
