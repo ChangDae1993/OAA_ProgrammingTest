@@ -71,7 +71,7 @@ public class Player_Animation : MonoBehaviour
         else if(input.isSleep)
         {
             //잠들기 동작
-            transform.localScale = new Vector2(input.xx + 1, 1);
+            transform.localScale = new Vector2(1, 1);
             animState = AnimState.Sleep_Loop;
             //Debug.Log(animState);
         }
