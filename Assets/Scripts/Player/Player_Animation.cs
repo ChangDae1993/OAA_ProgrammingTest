@@ -7,9 +7,13 @@ public class Player_Animation : MonoBehaviour
 {
     [SerializeField] private Player_Input input;
 
+    //현재 애니메이션 처리가 무엇인지에 대한 변수
+    [SerializeField] private AnimState animState;
+
     //스파인 애니메이션을 위한 변수 선언
     public SkeletonAnimation skeletonAnimation;
     public AnimationReferenceAsset[] AnimClip;
+
 
     //애니메이션에 대한 상태값
     public enum AnimState
@@ -31,8 +35,6 @@ public class Player_Animation : MonoBehaviour
         Turn,
     }
 
-    //현재 애니메이션 처리가 무엇인지에 대한 변수
-    private AnimState animState;
     //현재 어떤 애니메이션이 재생되고 있는지에 대한 변수
     private string CurAnim;
 
@@ -52,15 +54,57 @@ public class Player_Animation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (input.xx == 0.0f)
+        if(input.isSleep)
         {
-            animState = AnimState.Idle;
+            animState = AnimState.Sleep_Loop;
+            Debug.Log(animState);
+        }
+
+        if (input.xx == 0.0f && !input.isSleep)
+        {
+
+            if (!input.isCrawl)
+            {
+                //기본 idle 동작
+                animState = AnimState.Idle;
+            }
+            else
+            {
+                animState = AnimState.Sit;
+            }
+
         }
         else
         {
-            animState = AnimState.Run;
+            if(!input.isCrawl)
+            {
+                //걷는 동작
+                animState = AnimState.Run;
+            }
+            else
+            {
+                //기어가는 동작
+                animState = AnimState.RunDown;
+            }
+
+            if(input.isRun)
+            {
+                animState = AnimState.RunFast;
+            }
 
             transform.localScale = new Vector2(input.xx, 1);
+        }
+
+
+
+        if(input.isJump)
+        {
+            //점프 동작
+            animState = AnimState.JumpUp;
+        }
+        else if(input.isJumpDown)
+        {
+            animState = AnimState.JumpDown;
         }
 
         //애니메이션 적용
@@ -69,7 +113,18 @@ public class Player_Animation : MonoBehaviour
 
     private void FixedUpdate()
     {
-        input.rigid.velocity = new Vector2(input.xx * 300 * Time.deltaTime, input.rigid.velocity.y);
+        if(input.isRun)
+        {
+            input.rigid.velocity = new Vector2(input.xx * input.runSpeed * Time.deltaTime, input.rigid.velocity.y);
+        }
+        else if(input.isCrawl)
+        {
+            input.rigid.velocity = new Vector2(input.xx * input.crawlSpeed * Time.deltaTime, input.rigid.velocity.y);
+        }
+        else
+        {
+            input.rigid.velocity = new Vector2(input.xx * input.walkSpeed * Time.deltaTime, input.rigid.velocity.y);
+        }
     }
 
     private void AsncAnimation(AnimationReferenceAsset animClip, bool loop, float timeScale)
@@ -89,7 +144,14 @@ public class Player_Animation : MonoBehaviour
 
     private void SetCurAnimation(AnimState state)
     {
-        //짧게 작성한다면 이렇게
-        AsncAnimation(AnimClip[(int)state], true, 1f);
+
+        if(input.isCrawl && input.xx == 0)
+        {
+            AsncAnimation(AnimClip[(int)state], false, 1f);
+        }
+        else
+        {
+            AsncAnimation(AnimClip[(int)state], true, 1f);
+        }
     }
 }

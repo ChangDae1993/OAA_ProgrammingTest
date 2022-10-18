@@ -171,6 +171,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b5f6a5392bed8478f48e9ff3850324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigid: {fileID: 0}
+  xx: 0
+  walkSpeed: 0
+  runSpeed: 0
+  isJump: 0
+  isJumpDown: 0
+  isCrawl: 0
+  isRun: 0
 --- !u!50 &455643595
 Rigidbody2D:
   serializedVersion: 4
@@ -230,6 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f140180bebb5f5947b9686b178147884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: {fileID: 0}
+  animState: 0
   skeletonAnimation: {fileID: 800154228}
   AnimClip:
   - {fileID: 11400000, guid: c081b4806369bfe428af1dea58454702, type: 2}
@@ -380,8 +390,8 @@ GameObject:
   - component: {fileID: 1275815622}
   - component: {fileID: 1275815621}
   - component: {fileID: 1275815623}
-  m_Layer: 0
-  m_Name: Field
+  m_Layer: 3
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -448,7 +458,7 @@ Transform:
   m_GameObject: {fileID: 1275815620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.05, y: -2.53, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 1}
+  m_LocalScale: {x: 20, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
