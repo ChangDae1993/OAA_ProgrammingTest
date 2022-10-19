@@ -25,6 +25,7 @@ public class Player_Input : MonoBehaviour
     public bool isJump;
     public bool isJumpDown;
     RaycastHit2D rayHit;
+    public string[] layernames;
     private float jump_Power = 5.0f;
 
     //앉기 관련 동작
@@ -153,7 +154,7 @@ public class Player_Input : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Ground"));
+        rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask(layernames));
 
         if(rigid.velocity.y <=0)
         {
