@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player_Animation : MonoBehaviour
 {
     [SerializeField] private Player_Input input;
+    [SerializeField] private Player_Interaction interaction;
 
     //현재 애니메이션 처리가 무엇인지에 대한 변수
     [SerializeField] private AnimState animState;
@@ -13,6 +14,10 @@ public class Player_Animation : MonoBehaviour
     //스파인 애니메이션을 위한 변수 선언
     public SkeletonAnimation skeletonAnimation;
     public AnimationReferenceAsset[] AnimClip;
+
+    //캐릭터 회전을 위한 값
+    [SerializeField] private bool isLeft;
+    [SerializeField] private bool isRight;
 
 
     //애니메이션에 대한 상태값
@@ -42,6 +47,7 @@ public class Player_Animation : MonoBehaviour
     private void Awake()
     {
         input = GetComponent<Player_Input>();
+        interaction = GetComponent<Player_Interaction>();
     }
 
 
@@ -55,6 +61,7 @@ public class Player_Animation : MonoBehaviour
     void Update()
     {
 
+
         if (input.xx == 0.0f && !input.isSleep)
         {
 
@@ -62,6 +69,7 @@ public class Player_Animation : MonoBehaviour
             {
                 //기본 idle 동작
                 animState = AnimState.Idle;
+
             }
             else
             {
@@ -93,7 +101,20 @@ public class Player_Animation : MonoBehaviour
                 animState = AnimState.RunFast;
             }
 
-            transform.localScale = new Vector2(input.xx, 1);
+            if (input.key == 1)
+            {
+                isRight = true;
+                isLeft = false;
+                this.transform.localEulerAngles = new Vector3(0, 0, 0);
+                //animState = AnimState.Turn;
+            }
+            else if (input.key == -1)
+            {
+                isRight = false;
+                isLeft = true;
+                this.transform.localEulerAngles = new Vector3(0, 180, 0);
+                //animState = AnimState.Turn_Reverse;
+            }
         }
 
         //밀고 당기기 동작
@@ -110,7 +131,6 @@ public class Player_Animation : MonoBehaviour
         }
 
 
-
         if(input.isJump)
         {
             //점프 동작
@@ -119,6 +139,12 @@ public class Player_Animation : MonoBehaviour
         else if(input.isJumpDown)
         {
             animState = AnimState.JumpDown;
+        }
+
+        //죽음
+        if(interaction.isTrap)
+        {
+            animState = AnimState.Cutting;
         }
 
         //애니메이션 적용
@@ -159,7 +185,7 @@ public class Player_Animation : MonoBehaviour
     private void SetCurAnimation(AnimState state)
     {
 
-        if(input.isCrawl && input.xx == 0)
+        if(input.isCrawl && input.xx == 0 || interaction.isTrap)
         {
             AsncAnimation(AnimClip[(int)state], false, 1f);
         }

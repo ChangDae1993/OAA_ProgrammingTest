@@ -7,6 +7,9 @@ public class Player_Input : MonoBehaviour
     //참조
     [SerializeField] private Player_Interaction interact;
 
+    //좌우 회전
+    public int key;
+
     //상호작용 처리 변수
     public bool isInteract;
 
@@ -22,7 +25,6 @@ public class Player_Input : MonoBehaviour
     public bool isJump;
     public bool isJumpDown;
     RaycastHit2D rayHit;
-    RaycastHit2D rayenem;
     private float jump_Power = 5.0f;
 
     //앉기 관련 동작
@@ -46,6 +48,8 @@ public class Player_Input : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        key = 0;
+
         walkSpeed = 300;
         crawlSpeed = 150;
         runSpeed = 600;
@@ -62,8 +66,22 @@ public class Player_Input : MonoBehaviour
     {
         xx = Input.GetAxisRaw("Horizontal");
 
+        //좌우 회전 처리 변수
+        if(xx < 0)
+        {
+            key = -1;
+        }
+        else if (xx > 0)
+        {
+            key = 1;
+        }
+        else
+        {
+            key = 0;
+        }
+
         //잠들기 처리
-        if (!Input.anyKeyDown && xx == 0.0f)
+        if (!Input.anyKeyDown && key == 0.0f)
         {
             sleepTimer -= Time.deltaTime;
         }
@@ -105,7 +123,7 @@ public class Player_Input : MonoBehaviour
         }
 
         //달리기
-        if(Input.GetKey(KeyCode.X))
+        if (Input.GetKey(KeyCode.X))
         {
             if (isCrawl)
                 return;
