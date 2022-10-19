@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Player_Interaction : MonoBehaviour
 {
+    [SerializeField] private Player_Input input;
+
     public bool isTouch;
     public bool isTrap;
 
     // Start is called before the first frame update
     void Start()
     {
+        input = GetComponent<Player_Input>();
         isTouch = false;
         isTrap = false;
     }
@@ -42,6 +45,8 @@ public class Player_Interaction : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Trap"))
         {
+            input.xx = 0.0f;
+            input.enabled = false;
             isTrap = true;
             Debug.Log("Á×À½");
         }

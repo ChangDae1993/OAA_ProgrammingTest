@@ -16,8 +16,8 @@ public class Player_Animation : MonoBehaviour
     public AnimationReferenceAsset[] AnimClip;
 
     //캐릭터 회전을 위한 값
-    [SerializeField] private bool isLeft;
-    [SerializeField] private bool isRight;
+    //[SerializeField] private bool isLeft;
+    //[SerializeField] private bool isRight;
 
 
     //애니메이션에 대한 상태값
@@ -103,15 +103,11 @@ public class Player_Animation : MonoBehaviour
 
             if (input.key == 1)
             {
-                isRight = true;
-                isLeft = false;
                 this.transform.localEulerAngles = new Vector3(0, 0, 0);
                 //animState = AnimState.Turn;
             }
             else if (input.key == -1)
             {
-                isRight = false;
-                isLeft = true;
                 this.transform.localEulerAngles = new Vector3(0, 180, 0);
                 //animState = AnimState.Turn_Reverse;
             }
