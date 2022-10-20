@@ -647,7 +647,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455643592}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.08, y: -1.91, z: 0}
+  m_LocalPosition: {x: -6.02, y: -1.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2804,13 +2804,13 @@ MonoBehaviour:
   - ID: Room0
     Dimensions:
       serializedVersion: 2
-      x: 37.389812
+      x: 36.78982
       y: 0.91080487
-      width: 17.000006
+      width: 18.20001
       height: 14.000009
     TransitionDuration: 1
     TransitionEaseType: 0
-    ScaleCameraToFit: 0
+    ScaleCameraToFit: 1
     Zoom: 1
     ZoomScale: 8
     InternalID: 0
@@ -2823,7 +2823,7 @@ MonoBehaviour:
       height: 11.800004
     TransitionDuration: 1
     TransitionEaseType: 0
-    ScaleCameraToFit: 0
+    ScaleCameraToFit: 1
     Zoom: 1
     ZoomScale: 6
     InternalID: 0
