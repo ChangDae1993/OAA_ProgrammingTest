@@ -30,13 +30,13 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Parralax7
+  - Parralax6
+  - Parralax5
+  - Parralax4
+  - Parralax3
+  - Parralax2
+  - Parallax1
   m_SortingLayers:
   - name: Default
     uniqueID: 0
