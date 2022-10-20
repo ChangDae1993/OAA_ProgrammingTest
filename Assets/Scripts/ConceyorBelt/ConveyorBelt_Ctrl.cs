@@ -19,6 +19,7 @@ public class ConveyorBelt_Ctrl : MonoBehaviour
     {
         for (int i = 0; i <= Objs.Count - 1; i++)
         {
+            //Obj[i]의 rigidbody를 addforce로 움직인다 (inspector에서 방향과 속도 조절 가능)
             Objs[i].GetComponent<Rigidbody2D>().AddForce((rollSpeed * direction * Time.deltaTime));
         }
     }
