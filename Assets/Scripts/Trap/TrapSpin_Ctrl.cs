@@ -12,7 +12,7 @@ public class TrapSpin_Ctrl : MonoBehaviour
     [SerializeField] private Vector2 upTarget;
     [SerializeField] private float upSpeed;
 
-    private int a_key = 1;
+    //private int a_key = 1;
 
     private float rotSpeed;
 
@@ -32,14 +32,21 @@ public class TrapSpin_Ctrl : MonoBehaviour
     {
         Trap.Rotate(new Vector3(0, 0, rotSpeed * Time.deltaTime));
 
-        if (isUp && a_key == -1)
-            a_key = 1;
-        else if(!isUp && a_key == 1)
-            a_key = -1;
+        //if (isUp && a_key == -1)
+        //    a_key = 1;
+        //else if(!isUp && a_key == 1)
+        //    a_key = -1;
 
         if(!isStop)
         {
-            Trap.localPosition = new Vector2(0, Trap.position.y + upSpeed * Time.deltaTime * a_key);
+            if(isUp)
+            {
+                Trap.localPosition = new Vector2(0, Trap.localPosition.y + upSpeed * Time.deltaTime);
+            }
+            else
+            {
+                Trap.localPosition = new Vector2(0, Trap.localPosition.y - upSpeed * Time.deltaTime);
+            }
         }
 
         if (!isStop && (Trap.localPosition.y >= 1.5f || Trap.localPosition.y < -0.5f))
